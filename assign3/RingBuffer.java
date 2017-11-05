@@ -78,12 +78,12 @@ public class RingBuffer {
 	return buffer[first];
     }
 
-    public void debug() {
+    /*public void debug() {
 	System.out.println("First: " + first);
 	System.out.println("Last: " + last);
 	System.out.println("Size: " + getSize());
 	System.out.println(Arrays.toString(buffer));
-    }
+	}*/
 
     // a simple test of the constructor and methods in RingBuffer
     public static void main(String[] args) {

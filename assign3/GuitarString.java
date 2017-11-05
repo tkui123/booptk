@@ -38,7 +38,7 @@ public class GuitarString extends InstString{
 	    double randNum = Math.random() - 0.5;
 	    rb.enqueue(randNum);
 	}
-	rb.debug();
+	//rb.debug();
     }
    
     public void tic() {

@@ -53,10 +53,10 @@ public class DrumString extends InstString{
 
 	double lpfVal = ((num1 + num2) / 2) * 0.996;
 
-	if (!(Math.random() >= (1 - 0.6)))
+	if (!(Math.random() < 0.5 * (1 - 0.6)))
 	    lpfVal = num1;
 
-	if (Math.random() >= 0.5)
+	if (Math.random() < 0.5 * 0.6)
 	    lpfVal *= -1;
 	
 	rb.enqueue(lpfVal);
