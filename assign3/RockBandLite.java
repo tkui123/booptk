@@ -9,8 +9,8 @@
           // create two guitar strings, for concert A and C
           double CONCERT_A = 440.0;
           double CONCERT_C = CONCERT_A * Math.pow(2, 3.0/12.0);  
-          GuitarString stringA = new GuitarString(CONCERT_A);
-          GuitarString stringC = new GuitarString(CONCERT_C);
+          DrumString stringA = new DrumString(CONCERT_A);
+          DrumString stringC = new DrumString(CONCERT_C);
 
           while (true) {
 

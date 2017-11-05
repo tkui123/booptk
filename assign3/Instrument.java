@@ -5,7 +5,7 @@ package assign3;
 
 public abstract class Instrument {
     
-    protected  InstString[] strings;
+    protected InstString[] strings;
     
     public void playNote(int i){
 
