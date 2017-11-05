@@ -16,9 +16,10 @@ public class GuitarString extends InstString{
 	int n = (int)(Math.round(sampleRate / frequency));
 	rb = new RingBuffer(n);
 
-	//for (int i = 0; i < n; i++) {
-	//rb.enqueue(0.0);
-	    //}
+	for (int i = 0; i < n; i++) {
+	    rb.enqueue(0.0);
+	}
+	//rb.debug();
     }
 
     public GuitarString(double[] init) {
@@ -29,11 +30,15 @@ public class GuitarString extends InstString{
 	}
     }
    
-    public void pluck() {	
-	for (int i = 0; i < rb.getSize(); i++) {
+    public void pluck() {
+	int arrSize = rb.getSize();
+	rb.setSize(0);
+	for (int i = 0; i < arrSize; i++) {
+	    //rb.debug();
 	    double randNum = Math.random() - 0.5;
 	    rb.enqueue(randNum);
 	}
+	rb.debug();
     }
    
     public void tic() {

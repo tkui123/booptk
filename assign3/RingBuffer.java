@@ -30,6 +30,10 @@ public class RingBuffer {
 	return size;
     }
 
+    public void setSize(int num) {
+	size = num;
+    }
+
     // is the buffer empty (size equals zero)?
     public boolean isEmpty() {
 	return size == 0 ? true : false;
@@ -69,6 +73,7 @@ public class RingBuffer {
 
     // return (but do not delete) item from the front
     public double peek() {
+	//debug();
         if (isEmpty()) { throw new RuntimeException("Ring buffer underflow"); }
 	return buffer[first];
     }
@@ -76,6 +81,7 @@ public class RingBuffer {
     public void debug() {
 	System.out.println("First: " + first);
 	System.out.println("Last: " + last);
+	System.out.println("Size: " + getSize());
 	System.out.println(Arrays.toString(buffer));
     }
 
