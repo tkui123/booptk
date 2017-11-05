@@ -7,10 +7,10 @@
       public static void main(String[] args) {
 
           // create two guitar strings, for concert A and C
-          double CONCERT_A = 440.0;
-          double CONCERT_C = CONCERT_A * Math.pow(2, 3.0/12.0);  
-          DrumString stringA = new DrumString(CONCERT_A);
-          DrumString stringC = new DrumString(CONCERT_C);
+          double CONCERT_A = 440.0; 
+          double CONCERT_C = CONCERT_A * Math.pow(2, 3.0/12.0);
+          PianoString stringA = new PianoString(CONCERT_A);
+          PianoString stringC = new PianoString(CONCERT_C);
 
           while (true) {
 
