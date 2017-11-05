@@ -31,11 +31,11 @@ public class RockBand {
 	String pianoKeyboard = "~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"";
 	String drumKeyboard = "ZXCVBNM<>?zxcvbnm,.";
 
-	content = new String(Files.readAllBytes(Paths.get("Dont_Stop.txt")));
+	content = new String(Files.readAllBytes(Paths.get(fileName)));
 	//System.out.println(content);
 
 	for (String part : content.split("\\s+")) {
-	    System.out.println(part);
+	    //System.out.println(part);
 	    note = part;
 	    
 	    if (!songNameFound) {
@@ -56,7 +56,7 @@ public class RockBand {
 
 	    for (int i = 0; i < note.length(); i++) {
 		char key = note.charAt(i);
-		//System.out.println(key);
+		System.out.println(key);
 
 		if (bassToggle) {
 		    if (key == '/') {
@@ -68,23 +68,26 @@ public class RockBand {
 		int guitarBassIndex = guitarBassKeyboard.indexOf(key);
 		int pianoIndex = pianoKeyboard.indexOf(key);
 		int drumIndex = drumKeyboard.indexOf(key);
-		if (guitarBassIndex > -1) {
-		    if (!bassToggle) {
-			guitar.playNote(guitarBassIndex);
-		    } else {
-			//System.out.println("Hi");
-			//System.out.println(key);
-			bass.playNote(guitarBassIndex);
 
+		if (!(key == '/')) {
+		    if (guitarBassIndex > -1) {
+			if (!bassToggle) {
+			    guitar.playNote(guitarBassIndex);
+			} else {
+			    //System.out.println("Hi");
+			    System.out.println(key);
+			    bass.playNote(guitarBassIndex);
+
+			}
 		    }
-		}
 		 
-		else if (pianoIndex > -1) { piano.playNote(pianoIndex); }
+		    else if (pianoIndex > -1) { piano.playNote(pianoIndex); }
 
-		else if (drumIndex > -1) { drum.playNote(drumIndex); }
+		    else if (drumIndex > -1) { drum.playNote(drumIndex); }
 
-		for (int j = 0; j <= speed; j++) {
-		    StdAudio.play(guitar.ringNotes() + bass.ringNotes() +  piano.ringNotes() + drum.ringNotes());
+		    for (int j = 0; j <= speed; j++) {
+			StdAudio.play(guitar.ringNotes() + bass.ringNotes() +  piano.ringNotes() + drum.ringNotes());
+		    }
 		}
 	    }
 	}
@@ -92,7 +95,7 @@ public class RockBand {
     }
     
     public static void main(String[] args) throws IOException{
-	System.out.println(args[0]);
+	//System.out.println(args[0]);
 	
 	if (args.length == 2) {
 	    //System.out.println(args[0]);
