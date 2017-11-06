@@ -73,7 +73,11 @@ public class GuitarString extends InstString{
 	}
 	//rb.debug();
     }
-   
+
+    /*
+     * Allows the string's note to ring
+     *
+     */
     public void tic() {
 	double num1 = rb.dequeue();
 	double num2 = rb.peek();
