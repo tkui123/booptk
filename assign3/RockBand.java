@@ -1,6 +1,10 @@
 /*
  * RockBand.java
  *
+ * "I pledge my honor that I have abided by the Stevens Honor System."
+ *
+ * Tyler Kui (c) 2017
+ *
  */
 
 package assign3;
@@ -13,11 +17,25 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/*
+ * Plays songs from a text file or reads in keyboard input to play instrument sounds.
+ * 
+ * @author    Tyler Kui
+ * @version   1.0
+ * @since     20171104
+ *
+ */
 public class RockBand {
 
+    /* Reads the notes from the text file. First, it splits up the whole file into the individual chunks.
+     * First, the chunks where the song name and speed are found as indicated by "@@" and "##" respectively.
+     * Afterwards, each note in each part is checked with the keyboards for the different instruments. Once
+     * that is found, the note is plucked and rung.
+     * 
+     * @param   fileName  name of file to be read
+     */
     public static void playFromFile(String fileName) throws IOException {
 	String content;
-	boolean songNameFound = false;
 	int speed = 0;
 	boolean bassToggle = false;
 	String note = "";
@@ -38,13 +56,11 @@ public class RockBand {
 	    //System.out.println(part);
 	    note = part;
 	    
-	    if (!songNameFound) {
+	    if (part.length() > 1) {
 		if (part.substring(0, 2).equals("@@")) {
-		    System.out.println("NOW PLAYING - " + part.substring(2));
-		    songNameFound = true;
+		    System.out.println(part.substring(2));
 		    continue;
 		}
-	    } else if (part.length() > 1) {
 	        if (part.substring(0, 2).equals("##")) {
 		    speed = Integer.valueOf(part.substring(2));
 		    continue;
@@ -75,7 +91,7 @@ public class RockBand {
 			    guitar.playNote(guitarBassIndex);
 			} else {
 			    //System.out.println("Hi");
-			    System.out.println(key);
+			    //System.out.println(key);
 			    bass.playNote(guitarBassIndex);
 
 			}
@@ -93,7 +109,16 @@ public class RockBand {
 	}
 	
     }
-    
+
+    /*
+     * Main method to play notes of musical instruments. Two ways to run:
+     * 1. If you run the program, it will open a window, where you can use the keyboard to play notes.
+     * 2. Using a command after the java run command called "-play_from_file" followed by the name of
+     * the text file (i.g. "name.txt") will allow the user to play a song read off of the text file.
+     *
+     * @param   args   array for command line arguments.
+     *
+     */
     public static void main(String[] args) throws IOException{
 	//System.out.println(args[0]);
 	
