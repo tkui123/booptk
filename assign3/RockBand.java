@@ -52,28 +52,31 @@ public class RockBand {
 	content = new String(Files.readAllBytes(Paths.get(fileName)));
 	//System.out.println(content);
 
+	// gets different chunks/parts of notes in song text file
 	for (String part : content.split("\\s+")) {
 	    //System.out.println(part);
 	    note = part;
 	    
 	    if (part.length() > 1) {
-		if (part.substring(0, 2).equals("@@")) {
+		if (part.substring(0, 2).equals("@@")) { // reads title
 		    System.out.println(part.substring(2));
 		    continue;
 		}
-	        if (part.substring(0, 2).equals("##")) {
+	        if (part.substring(0, 2).equals("##")) { // reads speeds
 		    speed = Integer.valueOf(part.substring(2));
 		    continue;
-		} else if (part.substring(0, 2).equals("LL")) {
+		} else if (part.substring(0, 2).equals("LL")) { // reads for bass toggle
 		    bassToggle = !bassToggle;
 		    note = part.substring(2);
 		}
 	    }
 
+	    // goes through individual keys for notes in each chunk/part
 	    for (int i = 0; i < note.length(); i++) {
 		char key = note.charAt(i);
 		System.out.println(key);
 
+		// toggles base back when '/' by itself is read
 		if (bassToggle) {
 		    if (key == '/') {
 			bassToggle = false;
@@ -85,6 +88,7 @@ public class RockBand {
 		int pianoIndex = pianoKeyboard.indexOf(key);
 		int drumIndex = drumKeyboard.indexOf(key);
 
+		// plays notes using instrument keyboards to read keys in text file
 		if (!(key == '/')) {
 		    if (guitarBassIndex > -1) {
 			if (!bassToggle) {
@@ -101,6 +105,7 @@ public class RockBand {
 
 		    else if (drumIndex > -1) { drum.playNote(drumIndex); }
 
+		    // rings instrument notes
 		    for (int j = 0; j <= speed; j++) {
 			StdAudio.play(guitar.ringNotes() + bass.ringNotes() +  piano.ringNotes() + drum.ringNotes());
 		    }

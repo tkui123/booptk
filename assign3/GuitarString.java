@@ -39,7 +39,7 @@ public class GuitarString extends InstString{
 	int n = (int)(Math.round(sampleRate / frequency));
 	rb = new RingBuffer(n);
 
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) { // enqueues all values of n into ring buffer
 	    rb.enqueue(0.0);
 	}
 	//rb.debug();
@@ -54,7 +54,7 @@ public class GuitarString extends InstString{
     public GuitarString(double[] init) {
         rb = new RingBuffer(init.length);
 
-	for (double item : init) {
+	for (double item : init) { // enqueues all values of init array into ring buffer
 	    rb.enqueue(item);
 	}
     }
