@@ -19,7 +19,7 @@ import java.lang.Math;
  */
 public class PianoString extends InstString {
     
-    private final double sampleRate = 44100.0;
+    private final double SAMPLERATE = 44100.0;
 
     /*
      * Constructor #1 for PianoString class. Enqueues n 0.0s into PianoString's ring buffer.
@@ -28,7 +28,7 @@ public class PianoString extends InstString {
      *
      */
     public PianoString(double frequency) {
-	int n = (int)(Math.round(sampleRate / frequency));
+	int n = (int)(Math.round(SAMPLERATE / frequency));
 	rb = new RingBuffer(n);
 
 	for (int i = 0; i < n; i++) { // enqueues all values of n into ring buffer

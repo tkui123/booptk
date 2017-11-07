@@ -21,7 +21,7 @@ import java.lang.Math;
 
 public class DrumString extends InstString{
 
-    private final double sampleRate = 44100.0;
+    private final double SAMPLERATE = 44100.0;
 
     /*
      * Constructor #1 for DrumString
@@ -30,7 +30,7 @@ public class DrumString extends InstString{
      *
      */
     public DrumString(double frequency) {
-	int n = (int)(Math.round(sampleRate / frequency));
+	int n = (int)(Math.round(SAMPLERATE / frequency));
 	rb = new RingBuffer(n);
 
 	for (int i = 0; i < n; i++) { // enqueues all values of n into ring buffer
